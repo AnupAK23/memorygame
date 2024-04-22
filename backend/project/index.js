@@ -2,8 +2,10 @@ import "./config.js"
 import { addUser} from "./models/user.js";
 import express, {json} from 'express';
 import { getUsers } from "./models/user.js";
+import cors from 'cors'
 const app= express();
 app.use(express.json())
+app.use(cors())
 const port= process.env.PORT || 3000;
 
 app.post("/user",async(req,res)=>{
@@ -18,9 +20,9 @@ app.post("/user",async(req,res)=>{
 app.get('/user',async(req,res)=>{
     try {
         let users =await getUsers()
-        res.json
+        res.json(users)
     } catch (e) {
-        res.status(400).json({error:e})
+        res.status(404).json({error:e})
     }
 })
 

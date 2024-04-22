@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb';
-let uri=`mongodb://${process.env.HOSt}:${process.env.DBPORT}`
+let uri=`mongodb://${process.env.HOST}:${process.env.DBPORT}`
 
 const client = new MongoClient(uri);
 let conn;
